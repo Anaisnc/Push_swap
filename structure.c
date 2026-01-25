@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:29:24 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/24 21:47:46 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/25 12:16:36 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,11 @@ int	pop_top(t_stack *stack)
 // libérer toute la pile
 void	free_stack(t_stack *stack)
 {
-	t_node *current;
-	t_node *next;
+	t_node	*current;
+	t_node	*next;
 
 	if (!stack)
 		return ;
-
 	current = stack->top;
 	while (current)
 	{

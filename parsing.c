@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:53:21 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/24 21:25:57 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/25 12:16:52 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_valid_number(char *str)
 {
 	int	i;
-	
+
 	if (!str)
 		return (0);
 	i = 0;
@@ -32,7 +32,7 @@ int	is_valid_number(char *str)
 	return (1);
 }
 
-//conversion en entier avec atoi
+// conversion en entier avec atoi
 int	ft_atoi(const char *str)
 {
 	size_t	i;
@@ -58,29 +58,23 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-//fonction pour verifier les nombres presents plusieurs fois dans la liste
+// fonction pour verifier les nombres presents plusieurs fois dans la liste
 
-
-//fonction pour construire la liste
-
-
+// fonction pour construire la liste
 
 //
-t_stack parse_arguments(int ac, char **av)
+t_stack	parse_arguments(int ac, char **av)
 {
-	
 }
-//remplir la liste a a partir de l'argument utilisateur
-int main(int ac, char **av)
+// remplir la liste a a partir de l'argument utilisateur
+int	main(int ac, char **av)
 {
-	t_stack *a;
+	t_stack	*a;
 	t_stack	*b;
 
 	if (ac < 2)
 		return (0);
-
 	a = parse_arguments(ac, av);
 	if (!a)
 		return ();
 }
-

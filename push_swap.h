@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/25 12:17:03 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/25 12:19:47 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-# include "printf.h"
+# include "ft_printf.h"
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>

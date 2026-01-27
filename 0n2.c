@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 17:22:57 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/27 17:26:32 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/27 17:37:32 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(void)
 	printf("Before: %d %d %d %d %d %d\n", array[0], array[1], array[2],
 		array[3], array[4], array[5]);
 	selection_sort(array, 6);
-	printf("After: %d %d %d %d %d %d\n", array[0], array[1], array[2], array[3],
-		array[4], array[5]);
+	printf("After: %d %d %d %d %d %d\n", array[0], array[1], array[2], array[3],array[4], array[5]);
 	return (0);
 }

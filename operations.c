@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:27:11 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/28 17:35:37 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/28 17:50:05 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ void	ss(t_node *stack_a, t_node *stack_b)
 		sb(stack_b);
 }
 
-void	pa(t_node *stack_a, t_node *stack_b)
+void	pa(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
 	
-	if (stack_b == NULL)
+	if (*stack_b == NULL)
 		return ;
 
-	tmp = stack_b;
-	stack_b = stack_b->next;
-	tmp->next = stack_a;
-	stack_a = tmp;
+	tmp = *stack_b;
+	*stack_b = (*stack_b)->next;
+	tmp->next = *stack_a;
+	*stack_a = tmp;
 	write(1, "pa\n", 3);
 }
 
@@ -71,7 +71,22 @@ void	pb(t_node *stack_a, t_node *stack_b)
 }
 
 void	ra(t_node *stack_a)
-{}
+{
+	t_node *first;
+	t_node *last;
+	
+	if (stack_a == NULL || stack_a->next == NULL)
+		return ;
+
+	first = stack_a;
+	stack_a = stack_a->next;
+	last = stack_a;
+	while(last->next != NULL)
+		last = last->next;
+	last->next = first;
+	first->next = NULL;
+	write(1, "ra\n", 3);
+}
 void	rb(t_node *stack_b)
 {}
 void	rr(t_node *stack_a, t_node *stack_b)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/25 12:19:47 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/28 15:59:20 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,7 @@
 typedef struct s_node
 {
 	int				value;
-	int				index;
 	struct s_node	*next;
 }					t_node;
-
-typedef struct s_stack
-{
-	t_node			*top;
-	int				size;
-}					t_stack;
 
 #endif

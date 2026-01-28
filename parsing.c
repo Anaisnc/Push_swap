@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:53:21 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/25 12:16:52 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/01/28 16:02:20 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ t_stack	parse_arguments(int ac, char **av)
 // remplir la liste a a partir de l'argument utilisateur
 int	main(int ac, char **av)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_node	*a;
+	t_node	*b;
 
 	if (ac < 2)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:27:11 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/28 17:50:05 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/02/03 15:57:50 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,23 @@ void	ra(t_node *stack_a)
 	write(1, "ra\n", 3);
 }
 void	rb(t_node *stack_b)
-{}
+{
+	t_node 
+}
 void	rr(t_node *stack_a, t_node *stack_b)
-{}
+{
+	
+}
 void	rra(t_node *stack_a)
-{}
+{
+	
+}
 void	rrb(t_node *stack_b)
-{}
+{
+	
+}
 
 void	rrr(t_node *stack_a, t_node *stack_b)
-{}
+{
+	
+}

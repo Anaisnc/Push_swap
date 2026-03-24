@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 15:48:42 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/24 16:50:46 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/03/24 17:06:42 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,30 +235,4 @@ void	ft_putnbr(int n)
 		ft_putnbr(n / 10);
 	c = (n % 10) + '0';
 	write(1, &c, 1);
-}
-
-/*ERROR & EXIT */
-
-void	write_error(char *message)
-{
-	int	i;
-
-	i = 0;
-	while (message[i])
-		i++;
-	write(2, message, i);
-}
-
-void	error_exit(char *message)
-{
-	write_error(message);
-	exit(1);
-}
-
-void	error_free_exit(t_stack *a, t_stack *b, char *message)
-{
-	free_stack(a);
-	free_stack(b);
-	write_error(message);
-	exit(1);
 }

@@ -107,19 +107,15 @@ void		free_node(t_node *node);
 // les operations que tu avais commencé
 void		pa(t_stack *a, t_stack *b, t_benchmark *stats);
 void		pb(t_stack *a, t_stack *b, t_benchmark *stats);
-void		do_push(t_stack *src, t_stack *dst);
 void		sa(t_stack *a, t_benchmark *stats);
 void		sb(t_stack *b, t_benchmark *stats);
 void		ss(t_stack *a, t_stack *b, t_benchmark *stats);
-void		do_swap(t_stack *stack);
 void		ra(t_stack *a, t_benchmark *stats);
 void		rb(t_stack *b, t_benchmark *stats);
 void		rr(t_stack *a, t_stack *b, t_benchmark *stats);
-void		do_rotate(t_stack *stack);
 void		rra(t_stack *a, t_benchmark *stats);
 void		rrb(t_stack *b, t_benchmark *stats);
 void		rrr(t_stack *a, t_stack *b, t_benchmark *stats);
-void		do_reverse_rotate(t_stack *stack);
 
 /* j'ai choisi 3 algo pour ceux qui sont demander, je te met de la doc dans le readme pour que tu comprenne un peu */
 
@@ -136,10 +132,16 @@ void		choose_algo_by_disorder(t_stack *a, t_stack *b, t_config *cfg);
 
 /* TURK+lis (se qui serq utiliser pour le simple: de ce que j'ai lu il est qssez rapide et opti pour les listes simple et est de type 0(n2)) algo  */
 void		turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
+void		lis_turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		push_all_except_three(t_stack *a, t_stack *b, t_benchmark *stats);
 void		assign_current_position(t_stack *stack);
 void		assign_target_position(t_stack *a, t_stack *b);
 int			find_target_pos_in_a(t_stack *a, int b_index);
+int			*find_lis(t_stack *a, int *lis_length);
+void		push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats);
+void		calculate_cost(t_stack *a, t_stack *b);
+void		execute_cheapest_move(t_stack *a, t_stack *b, t_benchmark *stats);
+void		final_rotate_to_min(t_stack *a, t_benchmark *stats);
 
 /* CHUNK(lui ne ne sais pas trop de truc sur lui mais beaucoup de personne l'utilise à l'ecole. j'ai juste mit des fonctions que je pense qu'on doit utiliser)  */
 void		chunk_algorithm(t_stack *a, t_stack *b, int num_chunks, t_benchmark *stats);
@@ -162,5 +164,6 @@ int			get_total_operations(t_benchmark *stats);
 void		error_exit(char *message);
 void		error_free_exit(t_stack *a, t_stack *b, char *message);
 void		write_error(char *message);
+void		ft_putnbr(int n);
 
 #endif

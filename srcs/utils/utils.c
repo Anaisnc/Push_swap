@@ -12,34 +12,59 @@
 
 #include "push_swap.h"
 
-/*ajouter un cas pour les pourcentages dans printf pour gérer le retour de compute_disorder. float + calcul * 100.*/
 int	compute_disorder(t_stack *a)
 {
 	int	mistakes;
 	int	total_pairs;
+	int	size;
+	t_node	*current_i;
+	t_node	*current_j;
 	int	i;
-	int	j;
 
 	mistakes = 0;
-	total_pairs = 0;
+	size = stack_size(a);
+	total_pairs = size * (size - 1) / 2;
+	if (total_pairs == 0)
+		return (0);
+	current_i = a->top;
 	i = 0;
-	while (i < size_a - 1)
+	while (current_i && i < size - 1)
 	{
-		j = i + 1;
-		while (j < size_a - 1)
+		current_j = current_i->next;
+		while (current_j)
 		{
-			total_pairs++;
-			if (a[i] > a[j])
+			if (current_i->index > current_j->index)
 				mistakes++;
+			current_j = current_j->next;
 		}
+		current_i = current_i->next;
+		i++;
 	}
-	return (mistakes / total_pairs);
+	return ((mistakes * 100) / total_pairs);
 }
 
-void	error_exit(void)
+void	error_exit(char *message)
 {
+	if (message)
+		write(2, message, 6);
+	else
+		write(2, "Error\n", 6);
+	exit(1);
 }
 
 void	free_stack(t_stack *stack)
 {
+	t_node	*current;
+	t_node	*tmp;
+
+	if (!stack)
+		return ;
+	current = stack->top;
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
+	free(stack);
 }

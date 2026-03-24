@@ -2,7 +2,9 @@
 
 static void	run_sort(t_stack *a, t_stack *b, t_config *config)
 {
-	if (stack_size(a) <= 3)
+	if (stack_size(a) == 2)
+    	sort_two(a, &config->stats);
+	else if (stack_size(a) <= 3)
 		sort_three(a, &config->stats);
 	else if (stack_size(a) <= 5)
 		sort_five(a, b, &config->stats);

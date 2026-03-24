@@ -1,14 +1,40 @@
 #include "push_swap.h"
 
-long	ft_atoi(const char *str)
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	ft_isspace(int c)
+{
+	return (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\r' || c == '\v' || c == '\f');
+}
+
+static long	ft_atoi_digits(const char *str, size_t i, int sign)
 {
 	long	result;
-	int		sign;
-	int		i;
 
 	result = 0;
-	sign = 1;
+	while (ft_isdigit(str[i]))
+	{
+		result = result * 10 + (str[i] - '0');
+		if (result * sign > INT_MAX || result * sign < INT_MIN)
+			return (LONG_MIN);
+		i++;
+	}
+	if (str[i] != '\0')
+		return (LONG_MIN);
+	return (result * sign);
+}
+
+long	ft_atoi(const char *str)
+{
+	size_t	i;
+	int		sign;
+
 	i = 0;
+	sign = 1;
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -17,21 +43,7 @@ long	ft_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
-}
-
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_isspace(int c)
-{
-	return (c == ' ' || c == '\t' || c == '\n' ||
-			c == '\r' || c == '\v' || c == '\f');
+	if (!ft_isdigit(str[i]))
+		return (LONG_MIN);
+	return (ft_atoi_digits(str, i, sign));
 }

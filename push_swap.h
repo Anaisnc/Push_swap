@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/28 15:59:20 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/03/24 16:06:50 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ bool		parse_bench_flag(char *flag);
 int			parse_all_flags(int argc, char **argv, t_config *cfg);
 void		validate_input(t_stack *a);
 bool		has_duplicates(t_stack *a);
-bool		is_valid_number(char *str);
+int			is_valid_number(char *str);
 bool		is_int_overflow(char *str);
 
 void		assign_index(t_stack *a);

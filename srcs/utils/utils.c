@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:55:13 by ancourt           #+#    #+#             */
-/*   Updated: 2026/01/25 12:17:38 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/03/24 16:23:51 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,4 @@ int	compute_disorder(t_stack *a)
 		i++;
 	}
 	return ((mistakes * 100) / total_pairs);
-}
-
-void	error_exit(char *message)
-{
-	if (message)
-		write(2, message, 6);
-	else
-		write(2, "Error\n", 6);
-	exit(1);
-}
-
-void	free_stack(t_stack *stack)
-{
-	t_node	*current;
-	t_node	*tmp;
-
-	if (!stack)
-		return ;
-	current = stack->top;
-	while (current)
-	{
-		tmp = current->next;
-		free(current);
-		current = tmp;
-	}
-	free(stack);
 }

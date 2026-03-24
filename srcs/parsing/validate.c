@@ -1,23 +1,5 @@
 #include "push_swap.h"
 
-bool	is_valid_number(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (!str[i])
-		return (false);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
 bool	is_int_overflow(char *str)
 {
 	long	num;

@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 15:48:42 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/24 17:06:42 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/03/24 17:17:58 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,32 +117,6 @@ static char	**ft_split(const char *s, char c)
 	if (!fill_split(res, s, c, words))
 		return (NULL);
 	return (res);
-}
-
-/* ASSIGN INDEX */
-
-void	sort_values(int *values, int size)
-{
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		j = 0;
-		while (j < size - i - 1)
-		{
-			if (values[j] > values[j + 1])
-			{
-				tmp = values[j];
-				values[j] = values[j + 1];
-				values[j + 1] = tmp;
-			}
-			j++;
-		}
-		i++;
-	}
 }
 
 /* PARSE ARGS */

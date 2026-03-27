@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 static int	ft_strcmp(const char *s1, const char *s2)

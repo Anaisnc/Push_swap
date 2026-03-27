@@ -18,6 +18,7 @@ SRCS        = main.c \
               srcs/parsing/validate.c \
               srcs/parsing/atoi.c \
               srcs/parsing/flags.c \
+              srcs/parsing/split.c \
               srcs/parsing/indexing.c \
               srcs/stack/stack_init.c \
               srcs/stack/stack_check.c \

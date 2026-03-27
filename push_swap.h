@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: anaiscourt <ancourt@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/24 16:06:50 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/03/27 14:43:20 by anaiscourt       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,6 @@ void		medium_sort(t_stack *a, t_stack *b, t_benchmark *stats);
 void		complex_sort(t_stack *a, t_stack *b, t_benchmark *stats);
 void		adaptive_sort(t_stack *a, t_stack *b, t_config *cfg);
 void		choose_algo_by_disorder(t_stack *a, t_stack *b, t_config *cfg);
-
-/* TURK+lis (se qui serq utiliser pour le simple: de ce que j'ai lu il est qssez rapide et opti pour les listes simple et est de type 0(n2)) algo  */
 void		turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		lis_turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		push_all_except_three(t_stack *a, t_stack *b, t_benchmark *stats);
@@ -145,8 +143,6 @@ void		push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats);
 void		calculate_cost(t_stack *a, t_stack *b);
 void		execute_cheapest_move(t_stack *a, t_stack *b, t_benchmark *stats);
 void		final_rotate_to_min(t_stack *a, t_benchmark *stats);
-
-/* CHUNK(lui ne ne sais pas trop de truc sur lui mais beaucoup de personne l'utilise à l'ecole. j'ai juste mit des fonctions que je pense qu'on doit utiliser)  */
 void		chunk_algorithm(t_stack *a, t_stack *b, int num_chunks, t_benchmark *stats);
 int			calculate_optimal_chunks(int size);
 void		get_chunk_range(int id, int chunks, int size, int *min, int *max);
@@ -158,11 +154,7 @@ void		merge_back_from_b(t_stack *a, t_stack *b, t_benchmark *stats);
 int			calculate_optimal_chunks(int size);
 void		push_chunk_to_b(t_stack *a, t_stack *b, int min, int max, t_benchmark *stats);
 void		merge_back_from_b(t_stack *a, t_stack *b, t_benchmark *stats);
-
-/*  RADIX (pas encore renseigner sur lui mqis guillaume et sam me l'ont proposé */
 void		radix_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
-
-// afficher les stats
 void		init_benchmark(t_benchmark *stats);
 void		init_config(t_config *cfg);
 void		reset_stats(t_benchmark *stats);
@@ -170,7 +162,6 @@ void		print_benchmark(t_config *cfg);
 void		print_operations_count(t_benchmark *stats);
 char		*get_complexity_class(t_strategy strategy);
 int			get_total_operations(t_benchmark *stats);
-
 void		error_exit(char *message);
 void		error_free_exit(t_stack *a, t_stack *b, char *message);
 void		write_error(char *message);

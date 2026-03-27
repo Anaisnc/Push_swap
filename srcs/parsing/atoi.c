@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: anaiscourt <ancourt@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 17:03:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/24 17:03:08 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/03/27 14:57:36 by anaiscourt       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,19 @@ long	ft_atoi(const char *str)
 	if (!ft_isdigit(str[i]))
 		return (LONG_MIN);
 	return (ft_atoi_digits(str, i, sign));
+}
+
+void	ft_putnbr(int n)
+{
+	char	c;
+
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	c = (n % 10) + '0';
+	write(1, &c, 1);
 }

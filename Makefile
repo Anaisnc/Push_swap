@@ -39,6 +39,8 @@ SRCS        = main.c \
               srcs/turk+LIS/turk_positions.c \
               srcs/turk+LIS/turk_costs.c \
               srcs/turk+LIS/turk_execute.c \
+			  srcs/benchmark/benchmark_init.c \
+			  srcs/benchmark/benchmark_print.c \
               srcs/utils/utils.c \
               srcs/utils/error.c
 
@@ -70,12 +72,12 @@ test: $(NAME)
 	@./$(NAME) 2 1 3
 	@echo ""
 	@echo "$(BLUE)Testing with 100 numbers...$(RESET)"
-	@ARG=$$(shuf -i 0-999 -n 100 | tr '\n' ' '); \
+	@ARG=$$(gshuf -i 0-999 -n 100 | tr '\n' ' '); \
 	./$(NAME) --simple $$ARG | wc -l
 
 test-bench: $(NAME)
 	@echo "$(BLUE)Testing benchmark mode with 100 numbers...$(RESET)"
-	@ARG=$$(shuf -i 0-999 -n 100 | tr '\n' ' '); \
+	@ARG=$$(gshuf -i 0-999 -n 100 | tr '\n' ' '); \
 	./$(NAME) --bench --adaptive $$ARG 2>&1
 
 .PHONY: all clean fclean re test test-bench

@@ -1,0 +1,7 @@
+[bench] Disorder: 50.0%
+[bench] Strategy: Adaptive → LIS+Turk O(n²) (high disorder) Variable
+[bench] Total operations: 5097
+[bench] sa: 0, sb: 0, ss: 0
+[bench] pa: 460, pb: 460
+[bench] ra: 1449, rb: 400, rr: 588
+[bench] rra: 535, rrb: 682, rrr: 523

@@ -16,9 +16,7 @@ static void	print_stats(t_config *config)
 {
 	if (!config->bench_mode)
 		return ;
-	write(1, "Total operations: ", 18);
-	ft_putnbr(config->stats.total);
-	write(1, "\n", 1);
+	print_benchmark(config);
 }
 
 int	main(int argc, char **argv)

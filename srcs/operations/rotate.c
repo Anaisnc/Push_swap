@@ -34,7 +34,10 @@ void	ra(t_stack *a, t_benchmark *stats)
 	do_rotate(a);
 	write(1, "ra\n", 3);
 	if (stats)
+	{
 		stats->ra++;
+		stats->total++;
+	}
 }
 
 void	rb(t_stack *b, t_benchmark *stats)
@@ -42,7 +45,10 @@ void	rb(t_stack *b, t_benchmark *stats)
 	do_rotate(b);
 	write(1, "rb\n", 3);
 	if (stats)
+	{
 		stats->rb++;
+		stats->total++;
+	}
 }
 
 void	rr(t_stack *a, t_stack *b, t_benchmark *stats)
@@ -51,5 +57,8 @@ void	rr(t_stack *a, t_stack *b, t_benchmark *stats)
 	do_rotate(b);
 	write(1, "rr\n", 3);
 	if (stats)
+	{
 		stats->rr++;
+		stats->total++;
+	}
 }

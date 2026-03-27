@@ -32,7 +32,10 @@ void	sa(t_stack *a, t_benchmark *stats)
 	do_swap(a);
 	write(1, "sa\n", 3);
 	if (stats)
+	{
 		stats->sa++;
+		stats->total++;
+	}
 }
 
 void	sb(t_stack *b, t_benchmark *stats)
@@ -40,7 +43,10 @@ void	sb(t_stack *b, t_benchmark *stats)
 	do_swap(b);
 	write(1, "sb\n", 3);
 	if (stats)
+	{
 		stats->sb++;
+		stats->total++;
+	}
 }
 
 void	ss(t_stack *a, t_stack *b, t_benchmark *stats)
@@ -49,5 +55,8 @@ void	ss(t_stack *a, t_stack *b, t_benchmark *stats)
 	do_swap(b);
 	write(1, "ss\n", 3);
 	if (stats)
+	{
 		stats->ss++;
+		stats->total++;
+	}
 }

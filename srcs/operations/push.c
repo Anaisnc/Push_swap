@@ -32,7 +32,10 @@ void	pa(t_stack *a, t_stack *b, t_benchmark *stats)
 	do_push(b, a);
 	write(1, "pa\n", 3);
 	if (stats)
+	{
 		stats->pa++;
+		stats->total++;
+	}
 }
 
 void	pb(t_stack *a, t_stack *b, t_benchmark *stats)
@@ -40,5 +43,8 @@ void	pb(t_stack *a, t_stack *b, t_benchmark *stats)
 	do_push(a, b);
 	write(1, "pb\n", 3);
 	if (stats)
+	{
 		stats->pb++;
+		stats->total++;
+	}
 }

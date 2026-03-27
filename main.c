@@ -2,7 +2,9 @@
 
 static void	run_sort(t_stack *a, t_stack *b, t_config *config)
 {
-	if (stack_size(a) <= 3)
+	if (config->strategy == STRATEGY_ADAPTIVE)
+		adaptive_sort(a, b, config);
+	else if (stack_size(a) <= 3)
 		sort_three(a, &config->stats);
 	else if (stack_size(a) <= 5)
 		sort_five(a, b, &config->stats);
@@ -38,6 +40,7 @@ int	main(int argc, char **argv)
 		error_free_exit(a, b, "Error\n");
 	validate_input(a);
 	assign_index(a);
+	config.disorder = (float)compute_disorder(a) / 100.0;
 	if (!is_sorted(a))
 		run_sort(a, b, &config);
 	print_stats(&config);

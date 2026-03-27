@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	is_valid_number(char *str)
+bool	is_valid_number(char *str)
 {
 	int	i;
 

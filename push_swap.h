@@ -78,7 +78,7 @@ bool		parse_bench_flag(char *flag);
 int			parse_all_flags(int argc, char **argv, t_config *cfg);
 void		validate_input(t_stack *a);
 bool		has_duplicates(t_stack *a);
-int			is_valid_number(char *str);
+bool		is_valid_number(char *str);
 bool		is_int_overflow(char *str);
 
 void		assign_index(t_stack *a);
@@ -87,6 +87,7 @@ void		sort_values(int *values, int size);
 long		ft_atoi(const char *str);
 int			ft_isdigit(int c);
 int			ft_isspace(int c);
+int			compute_disorder(t_stack *a);
 
 t_stack		*init_stack(void);
 t_node		*create_node(int value);
@@ -125,6 +126,8 @@ void		sort_two(t_stack *a, t_benchmark *stats);
 void		sort_three(t_stack *a, t_benchmark *stats);
 void		sort_five(t_stack *a, t_stack *b, t_benchmark *stats);
 void		simple_sort(t_stack *a, t_stack *b, t_benchmark *stats);
+void		adaptive_sort(t_stack *a, t_stack *b, t_config *cfg);
+void		choose_by_disorder(t_stack *a, t_stack *b, t_config *cfg);
 void		medium_sort(t_stack *a, t_stack *b, t_benchmark *stats);
 void		complex_sort(t_stack *a, t_stack *b, t_benchmark *stats);
 void		adaptive_sort(t_stack *a, t_stack *b, t_config *cfg);
@@ -145,6 +148,13 @@ void		final_rotate_to_min(t_stack *a, t_benchmark *stats);
 
 /* CHUNK(lui ne ne sais pas trop de truc sur lui mais beaucoup de personne l'utilise à l'ecole. j'ai juste mit des fonctions que je pense qu'on doit utiliser)  */
 void		chunk_algorithm(t_stack *a, t_stack *b, int num_chunks, t_benchmark *stats);
+int			calculate_optimal_chunks(int size);
+void		get_chunk_range(int id, int chunks, int size, int *min, int *max);
+bool		is_in_chunk(int index, int min, int max);
+void		push_chunk_to_b(t_stack *a, t_stack *b, int min, int max, t_benchmark *stats);
+int			find_max_position(t_stack *b);
+void		optimal_rotation_b(t_stack *b, int pos, t_benchmark *stats);
+void		merge_back_from_b(t_stack *a, t_stack *b, t_benchmark *stats);
 int			calculate_optimal_chunks(int size);
 void		push_chunk_to_b(t_stack *a, t_stack *b, int min, int max, t_benchmark *stats);
 void		merge_back_from_b(t_stack *a, t_stack *b, t_benchmark *stats);

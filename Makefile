@@ -43,7 +43,8 @@ SRCS        = main.c \
 			  srcs/benchmark/benchmark_init.c \
 			  srcs/benchmark/benchmark_print.c \
               srcs/utils/utils.c \
-              srcs/utils/error.c
+              srcs/utils/error.c \
+              srcs/utils/structure.c
 
 OBJS        = $(SRCS:.c=.o)
 

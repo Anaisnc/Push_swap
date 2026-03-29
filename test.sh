@@ -45,4 +45,4 @@ echo ""
 
 # Test 5: Benchmark
 echo -e "${BLUE}Test 5: Benchmark mode${RESET}"
-./push_swap --bench --adaptive $(shuf -i 0-999 -n 100) 2>&1 | grep "\[bench\]"
+./push_swap --bench --adaptive $(shuf -i 0-999 -n 500) 2>&1 | grep "\[bench\]"

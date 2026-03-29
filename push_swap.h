@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-
-
 typedef enum e_strategy
 {
 	STRATEGY_SIMPLE,
@@ -43,8 +41,6 @@ typedef struct s_stack
 	t_node	*top;
 	int		size;
 }	t_stack;
-
-// structure pour les stats
 typedef struct s_benchmark
 {
 	int		sa;
@@ -76,7 +72,6 @@ int			parse_all_flags(int argc, char **argv, t_config *cfg);
 void		validate_input(t_stack *a);
 bool		has_duplicates(t_stack *a);
 bool		is_valid_number(char *str);
-bool		is_int_overflow(char *str);
 size_t		count_words(const char *s, char c);
 char		*dup_word(const char *s, size_t start, size_t end);
 char		**ft_split(const char *s, char c);
@@ -84,7 +79,6 @@ void		free_split(char **res, size_t k);
 int			fill_split(char **res, const char *s, char c, size_t words);
 
 void		assign_index(t_stack *a);
-int			get_index_position(t_stack *a, int value);
 long		ft_atoi(const char *str);
 int			ft_isdigit(int c);
 int			ft_isspace(int c);
@@ -150,7 +144,6 @@ void		reset_stats(t_benchmark *stats);
 void		print_benchmark(t_config *cfg);
 void		print_operations_count(t_benchmark *stats);
 char		*get_complexity_class(t_strategy strategy);
-int			get_total_operations(t_benchmark *stats);
 void		error_exit(char *message);
 void		error_free_exit(t_stack *a, t_stack *b, char *message);
 void		write_error(char *message);

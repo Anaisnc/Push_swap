@@ -1,1 +1,0 @@
-bash: ./push_swap: cannot execute binary file: Exec format error

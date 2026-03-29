@@ -60,7 +60,6 @@ typedef struct s_benchmark
 	int		rrr;
 	int		total;
 }	t_benchmark;
-
 typedef struct s_config
 {
 	t_strategy		strategy;
@@ -69,8 +68,6 @@ typedef struct s_config
 	t_benchmark		stats;
 	char			*strategy_name;
 }	t_config;
-
-int			parse_numbers(int argc, char **argv, t_stack *a, int start);
 int			count_numbers(int argc, char **argv, int start);
 int			parse_args(int argc, char **argv, t_stack *a, int start);
 t_strategy	parse_strategy_flag(char *flag);
@@ -79,19 +76,14 @@ int			parse_all_flags(int argc, char **argv, t_config *cfg);
 void		validate_input(t_stack *a);
 bool		has_duplicates(t_stack *a);
 bool		is_valid_number(char *str);
-bool		is_int_overflow(char *str);
-
 void		assign_index(t_stack *a);
 int			get_index_position(t_stack *a, int value);
-void		sort_values(int *values, int size);
 long		ft_atoi(const char *str);
 int			ft_isdigit(int c);
 int			ft_isspace(int c);
 int			compute_disorder(t_stack *a);
-
 t_stack		*init_stack(void);
 t_node		*create_node(int value);
-void		stack_add_top(t_stack *stack, int value);
 void		stack_add_bottom(t_stack *stack, int value);
 int			stack_size(t_stack *stack);
 t_node		*get_node_at_pos(t_stack *stack, int pos);
@@ -103,9 +95,6 @@ bool		is_sorted(t_stack *stack);
 bool		is_reverse_sorted(t_stack *stack);
 void		free_stack(t_stack *stack);
 void		free_both_stacks(t_stack *a, t_stack *b);
-void		free_node(t_node *node);
-
-// les operations que tu avais commencé
 void		pa(t_stack *a, t_stack *b, t_benchmark *stats);
 void		pb(t_stack *a, t_stack *b, t_benchmark *stats);
 void		sa(t_stack *a, t_benchmark *stats);
@@ -117,27 +106,20 @@ void		rr(t_stack *a, t_stack *b, t_benchmark *stats);
 void		rra(t_stack *a, t_benchmark *stats);
 void		rrb(t_stack *b, t_benchmark *stats);
 void		rrr(t_stack *a, t_stack *b, t_benchmark *stats);
-
-/* j'ai choisi 3 algo pour ceux qui sont demander, je te met de la doc dans le readme pour que tu comprenne un peu */
-
 void		sort_stack(t_stack *a, t_stack *b, t_config *cfg);
-void		choose_strategy(t_stack *a, t_stack *b, t_config *cfg);
 void		sort_two(t_stack *a, t_benchmark *stats);
 void		sort_three(t_stack *a, t_benchmark *stats);
 void		sort_five(t_stack *a, t_stack *b, t_benchmark *stats);
-void		simple_sort(t_stack *a, t_stack *b, t_benchmark *stats);
 void		adaptive_sort(t_stack *a, t_stack *b, t_config *cfg);
 void		choose_by_disorder(t_stack *a, t_stack *b, t_config *cfg);
 void		medium_sort(t_stack *a, t_stack *b, t_benchmark *stats);
 void		complex_sort(t_stack *a, t_stack *b, t_benchmark *stats);
 void		adaptive_sort(t_stack *a, t_stack *b, t_config *cfg);
-void		choose_algo_by_disorder(t_stack *a, t_stack *b, t_config *cfg);
 void		turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		lis_turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		push_all_except_three(t_stack *a, t_stack *b, t_benchmark *stats);
 void		assign_current_position(t_stack *stack);
 void		assign_target_position(t_stack *a, t_stack *b);
-int			find_target_pos_in_a(t_stack *a, int b_index);
 int			*find_lis(t_stack *a, int *lis_length);
 void		push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats);
 void		calculate_cost(t_stack *a, t_stack *b);

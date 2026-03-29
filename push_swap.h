@@ -6,7 +6,7 @@
 /*   By: anaiscourt <ancourt@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/27 14:43:20 by anaiscourt       ###   ########.fr       */
+/*   Updated: 2026/03/29 15:31:20 by anaiscourt       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ int			parse_all_flags(int argc, char **argv, t_config *cfg);
 void		validate_input(t_stack *a);
 bool		has_duplicates(t_stack *a);
 bool		is_valid_number(char *str);
+bool		is_int_overflow(char *str);
+size_t		count_words(const char *s, char c);
+char		*dup_word(const char *s, size_t start, size_t end);
+char		**ft_split(const char *s, char c);
+void		free_split(char **res, size_t k);
+int			fill_split(char **res, const char *s, char c, size_t words);
+
 void		assign_index(t_stack *a);
 int			get_index_position(t_stack *a, int value);
 long		ft_atoi(const char *str);

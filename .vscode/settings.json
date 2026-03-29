@@ -1,0 +1,11 @@
+{
+    "C_Cpp.default.compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
+    "terminal.integrated.profiles.windows": {
+        "MSYS2 bash": {
+            "path": "C:\\msys64\\usr\\bin\\bash.exe",
+            "args": ["--login"],
+            "env": {"MSYSTEM": "MINGW64"}
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "MSYS2 bash"
+}

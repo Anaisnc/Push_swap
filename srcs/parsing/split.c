@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static size_t	count_words(const char *s, char c)
+size_t	count_words(const char *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -21,7 +21,7 @@ static size_t	count_words(const char *s, char c)
 	return (count);
 }
 
-static char	*dup_word(const char *s, size_t start, size_t end)
+char	*dup_word(const char *s, size_t start, size_t end)
 {
 	char	*word;
 	size_t	i;
@@ -36,14 +36,14 @@ static char	*dup_word(const char *s, size_t start, size_t end)
 	return (word);
 }
 
-static void	free_split(char **res, size_t k)
+void	free_split(char **res, size_t k)
 {
 	while (k > 0)
 		free(res[--k]);
 	free(res);
 }
 
-static int	fill_split(char **res, const char *s, char c, size_t words)
+int	fill_split(char **res, const char *s, char c, size_t words)
 {
 	size_t	i;
 	size_t	k;
@@ -70,7 +70,7 @@ static int	fill_split(char **res, const char *s, char c, size_t words)
 	return (1);
 }
 
-static char	**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**res;
 	size_t	words;

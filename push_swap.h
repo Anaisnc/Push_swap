@@ -126,16 +126,15 @@ void		push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats);
 void		calculate_cost(t_stack *a, t_stack *b);
 void		execute_cheapest_move(t_stack *a, t_stack *b, t_benchmark *stats);
 void		final_rotate_to_min(t_stack *a, t_benchmark *stats);
-void		chunk_algorithm(t_stack *a, t_stack *b, int num_chunks, t_benchmark *stats);
+void		chunk_algorithm(t_stack *a, t_stack *b, int num_chunks,
+				t_benchmark *stats);
 int			calculate_optimal_chunks(int size);
-void		get_chunk_range(int id, int chunks, int size, int *min, int *max);
+t_chunk_range	get_chunk_range(int id, int chunks, int size);
 bool		is_in_chunk(int index, int min, int max);
-void		push_chunk_to_b(t_stack *a, t_stack *b, int min, int max, t_benchmark *stats);
+void		push_chunk_to_b(t_stack *a, t_stack *b, t_chunk_range range,
+				t_benchmark *stats);
 int			find_max_position(t_stack *b);
 void		optimal_rotation_b(t_stack *b, int pos, t_benchmark *stats);
-void		merge_back_from_b(t_stack *a, t_stack *b, t_benchmark *stats);
-int			calculate_optimal_chunks(int size);
-void		push_chunk_to_b(t_stack *a, t_stack *b, int min, int max, t_benchmark *stats);
 void		merge_back_from_b(t_stack *a, t_stack *b, t_benchmark *stats);
 void		radix_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		init_benchmark(t_benchmark *stats);

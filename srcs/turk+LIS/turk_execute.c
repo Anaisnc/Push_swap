@@ -1,6 +1,12 @@
 
 #include "push_swap.h"
 
+typedef struct s_move_costs
+{
+	int	a;
+	int	b;
+}	t_move_costs;
+
 static int	abs_value(int n)
 {
 	if (n < 0)
@@ -42,19 +48,20 @@ t_node	*find_cheapest_node(t_stack *b)
 	return (cheapest);
 }
 
-void	do_rotations(t_stack *a, t_stack *b, int *ca, int *cb, t_benchmark *s)
+static void	do_rotations(t_stack *a, t_stack *b, t_move_costs *costs,
+		t_benchmark *stats)
 {
-	while (*ca > 0 && *cb > 0)
+	while (costs->a > 0 && costs->b > 0)
 	{
-		rr(a, b, s);
-		(*ca)--;
-		(*cb)--;
+		rr(a, b, stats);
+		costs->a--;
+		costs->b--;
 	}
-	while (*ca < 0 && *cb < 0)
+	while (costs->a < 0 && costs->b < 0)
 	{
-		rrr(a, b, s);
-		(*ca)++;
-		(*cb)++;
+		rrr(a, b, stats);
+		costs->a++;
+		costs->b++;
 	}
 }
 
@@ -88,16 +95,15 @@ void	rotate_stack_b(t_stack *b, int *cost, t_benchmark *stats)
 
 void	execute_cheapest_move(t_stack *a, t_stack *b, t_benchmark *stats)
 {
-	t_node	*cheapest;
-	int		cost_a;
-	int		cost_b;
+	t_node			*cheapest;
+	t_move_costs	costs;
 
 	cheapest = find_cheapest_node(b);
-	cost_a = cheapest->cost_a;
-	cost_b = cheapest->cost_b;
-	do_rotations(a, b, &cost_a, &cost_b, stats);
-	rotate_stack_a(a, &cost_a, stats);
-	rotate_stack_b(b, &cost_b, stats);
+	costs.a = cheapest->cost_a;
+	costs.b = cheapest->cost_b;
+	do_rotations(a, b, &costs, stats);
+	rotate_stack_a(a, &costs.a, stats);
+	rotate_stack_b(b, &costs.b, stats);
 	pa(a, b, stats);
 }
 

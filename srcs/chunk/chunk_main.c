@@ -13,29 +13,31 @@ int	calculate_optimal_chunks(int size)
 
 void	chunk_algorithm(t_stack *a, t_stack *b, int chunks, t_benchmark *stats)
 {
-	int	i;
-	int	min;
-	int	max;
+	int				i;
+	t_chunk_range	range;
 
 	i = 0;
 	while (i < chunks)
 	{
-		get_chunk_range(i, chunks, stack_size(a) + stack_size(b), &min, &max);
-		push_chunk_to_b(a, b, min, max, stats);
+		range = get_chunk_range(i, chunks, stack_size(a) + stack_size(b));
+		push_chunk_to_b(a, b, range, stats);
 		i++;
 	}
 	merge_back_from_b(a, b, stats);
 }
-void	get_chunk_range(int id, int chunks, int size, int *min, int *max)
+
+t_chunk_range	get_chunk_range(int id, int chunks, int size)
 {
-	int	chunk_size;
+	t_chunk_range	range;
+	int				chunk_size;
 
 	chunk_size = size / chunks;
-	*min = id * chunk_size;
+	range.min = id * chunk_size;
 	if (id == chunks - 1)
-		*max = size;
+		range.max = size;
 	else
-		*max = (id + 1) * chunk_size;
+		range.max = (id + 1) * chunk_size;
+	return (range);
 }
 
 bool	is_in_chunk(int index, int min, int max)
@@ -43,27 +45,25 @@ bool	is_in_chunk(int index, int min, int max)
 	return (index >= min && index < max);
 }
 
-void	push_chunk_to_b(t_stack *a, t_stack *b, int min, int max,
+void	push_chunk_to_b(t_stack *a, t_stack *b, t_chunk_range range,
 		t_benchmark *stats)
 {
 	int	pushed;
 	int	expected;
 
-	expected = max - min;
+	expected = range.max - range.min;
 	pushed = 0;
 	while (pushed < expected && stack_size(a) > 0)
 	{
-		if (is_in_chunk(a->top->index, min, max))
+		if (is_in_chunk(a->top->index, range.min, range.max))
 		{
 			pb(a, b, stats);
 			pushed++;
-			if (pushed < expected && stack_size(b) > 1)
+			if (pushed < expected && stack_size(b) > 1 && a->top)
 			{
-				if (a->top && is_in_chunk(a->top->index, min, max))
-				{
-					if (b->top->index < min + (max - min) / 2)
-						rb(b, stats);
-				}
+				if (is_in_chunk(a->top->index, range.min, range.max)
+					&& b->top->index < range.min + (range.max - range.min) / 2)
+					rb(b, stats);
 			}
 		}
 		else

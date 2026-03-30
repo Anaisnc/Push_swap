@@ -79,7 +79,7 @@ test: $(NAME)
 
 test-bench: $(NAME)
 	@echo "$(BLUE)Testing benchmark mode with 100 numbers...$(RESET)"
-	@ARG=$$(gshuf -i 0-999 -n 100 | tr '\n' ' '); \
+	@ARG=$$(shuf -i 0-999 -n 100 | tr '\n' ' '); \
 	./$(NAME) --bench --adaptive $$ARG 2>&1
 
 .PHONY: all clean fclean re test test-bench

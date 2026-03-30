@@ -62,44 +62,6 @@ static void	calculate_lis_lengths(int *arr, int *lis_len, int size)
 	}
 }
 
-static int	find_max_lis_index(int *lis_len, int size, int *max_len)
-{
-	int	i;
-	int	max_idx;
-
-	*max_len = 0;
-	max_idx = 0;
-	i = 0;
-	while (i < size)
-	{
-		if (lis_len[i] > *max_len)
-		{
-			*max_len = lis_len[i];
-			max_idx = i;
-		}
-		i++;
-	}
-	return (max_idx);
-}
-
-static void	reconstruct_lis(int *arr, int *lis_len, int *lis, int max_idx)
-{
-	int	i;
-	int	lis_idx;
-
-	lis_idx = lis_len[max_idx] - 1;
-	i = max_idx;
-	while (i >= 0 && lis_idx >= 0)
-	{
-		if (lis_len[i] == lis_idx + 1)
-		{
-			lis[lis_idx] = arr[i];
-			lis_idx--;
-		}
-		i--;
-	}
-}
-
 int	*find_lis(t_stack *a, int *lis_length)
 {
 	int	*arr;
@@ -108,6 +70,7 @@ int	*find_lis(t_stack *a, int *lis_length)
 	int	size;
 	int	max_len;
 	int	max_idx;
+	int	i;
 
 	size = stack_size(a);
 	arr = stack_to_array(a);
@@ -123,9 +86,26 @@ int	*find_lis(t_stack *a, int *lis_length)
 		return (NULL);
 	}
 	calculate_lis_lengths(arr, lis_len, size);
-	max_idx = find_max_lis_index(lis_len, size, &max_len);
-	reconstruct_lis(arr, lis_len, lis, max_idx);
-	*lis_length = max_len;
+	max_len = 0;
+	max_idx = 0;
+	i = 0;
+	while (i < size)
+	{
+		if (lis_len[i] > max_len)
+		{
+			max_len = lis_len[i];
+			max_idx = i;
+		}
+		i++;
+	}
+	i = max_idx;
+	while (i >= 0 && max_len > 0)
+	{
+		if (lis_len[i] == max_len)
+			lis[--max_len] = arr[i];
+		i--;
+	}
+	*lis_length = lis_len[max_idx];
 	free(lis_len);
 	free(arr);
 	return (lis);

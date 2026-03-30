@@ -44,13 +44,28 @@ SRCS        = main.c \
 
 OBJS        = $(SRCS:.c=.o)
 DEPS        = $(SRCS:.c=.d)
+BONUS_NAME  = checker
+BONUS_SRCS  = $(filter-out main.c, $(SRCS)) \
+              bonus/checker.c \
+              bonus/checker_ops.c \
+              bonus/checker_utils.c \
+              bonus/get_next_line.c \
+              bonus/get_next_line_utils.c
+BONUS_OBJS  = $(BONUS_SRCS:.c=.o)
+BONUS_DEPS  = $(BONUS_SRCS:.c=.d)
 
 all: $(NAME)
+bonus: $(BONUS_NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)✓ $(NAME) compiled successfully!$(RESET)"
+
+$(BONUS_NAME): $(BONUS_OBJS)
+	@echo "$(BLUE)Linking $(BONUS_NAME)...$(RESET)"
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
+	@echo "$(GREEN)✓ $(BONUS_NAME) compiled successfully!$(RESET)"
 
 %.o: %.c
 	@echo "$(BLUE)Compiling $<...$(RESET)"
@@ -58,11 +73,11 @@ $(NAME): $(OBJS)
 
 clean:
 	@echo "$(YELLOW)Cleaning object files...$(RESET)"
-	@$(RM) $(OBJS) $(DEPS)
+	@$(RM) $(OBJS) $(DEPS) $(BONUS_OBJS) $(BONUS_DEPS)
 
 fclean: clean
-	@echo "$(RED)Cleaning $(NAME)...$(RESET)"
-	@$(RM) $(NAME)
+	@echo "$(RED)Cleaning binaries...$(RESET)"
+	@$(RM) $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
@@ -79,6 +94,7 @@ test-bench: $(NAME)
 	@ARG=$$(shuf -i 0-999 -n 100 | tr '\n' ' '); \
 	    ./$(NAME) --bench --adaptive $$ARG 2>&1
 
-.PHONY: all clean fclean re test test-bench
+.PHONY: all bonus clean fclean re test test-bench
 
 -include $(DEPS)
+-include $(BONUS_DEPS)

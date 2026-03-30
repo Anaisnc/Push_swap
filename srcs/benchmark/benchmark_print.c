@@ -44,44 +44,31 @@ static void	ft_putnbr_fd(int n, int fd)
 	write(fd, &c, 1);
 }
 
-char	*get_complexity_class(t_strategy strategy)
+
+static void	print_op_line(char *name1, int v1, char *name2, int v2)
 {
-	if (strategy == STRATEGY_SIMPLE)
-		return ("O(n²)");
-	else if (strategy == STRATEGY_MEDIUM)
-		return ("O(n√n)");
-	else if (strategy == STRATEGY_COMPLEX)
-		return ("O(n log n)");
-	else
-		return ("Variable");
+	ft_putstr_fd("[bench] ", 2);
+	ft_putstr_fd(name1, 2);
+	ft_putnbr_fd(v1, 2);
+	ft_putstr_fd(", ", 2);
+	ft_putstr_fd(name2, 2);
+	ft_putnbr_fd(v2, 2);
+	ft_putstr_fd("\n", 2);
 }
 
 void	print_operations_count(t_benchmark *stats)
 {
-	ft_putstr_fd("[bench] sa: ", 2);
-	ft_putnbr_fd(stats->sa, 2);
-	ft_putstr_fd(", sb: ", 2);
-	ft_putnbr_fd(stats->sb, 2);
-	ft_putstr_fd(", ss: ", 2);
+	print_op_line("sa: ", stats->sa, "sb: ", stats->sb);
+	ft_putstr_fd("[bench] ss: ", 2);
 	ft_putnbr_fd(stats->ss, 2);
 	ft_putstr_fd("\n", 2);
-	ft_putstr_fd("[bench] pa: ", 2);
-	ft_putnbr_fd(stats->pa, 2);
-	ft_putstr_fd(", pb: ", 2);
-	ft_putnbr_fd(stats->pb, 2);
-	ft_putstr_fd("\n", 2);
-	ft_putstr_fd("[bench] ra: ", 2);
-	ft_putnbr_fd(stats->ra, 2);
-	ft_putstr_fd(", rb: ", 2);
-	ft_putnbr_fd(stats->rb, 2);
-	ft_putstr_fd(", rr: ", 2);
+	print_op_line("pa: ", stats->pa, "pb: ", stats->pb);
+	print_op_line("ra: ", stats->ra, "rb: ", stats->rb);
+	ft_putstr_fd("[bench] rr: ", 2);
 	ft_putnbr_fd(stats->rr, 2);
 	ft_putstr_fd("\n", 2);
-	ft_putstr_fd("[bench] rra: ", 2);
-	ft_putnbr_fd(stats->rra, 2);
-	ft_putstr_fd(", rrb: ", 2);
-	ft_putnbr_fd(stats->rrb, 2);
-	ft_putstr_fd(", rrr: ", 2);
+	print_op_line("rra: ", stats->rra, "rrb: ", stats->rrb);
+	ft_putstr_fd("[bench] rrr: ", 2);
 	ft_putnbr_fd(stats->rrr, 2);
 	ft_putstr_fd("\n", 2);
 }

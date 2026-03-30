@@ -30,3 +30,15 @@ void	init_config(t_config *cfg)
 	cfg->strategy_name = "Adaptive";
 	init_benchmark(&cfg->stats);
 }
+
+char	*get_complexity_class(t_strategy strategy)
+{
+	if (strategy == STRATEGY_SIMPLE)
+		return ("O(n²)");
+	else if (strategy == STRATEGY_MEDIUM)
+		return ("O(n√n)");
+	else if (strategy == STRATEGY_COMPLEX)
+		return ("O(n log n)");
+	else
+		return ("Variable");
+}

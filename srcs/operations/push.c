@@ -13,7 +13,7 @@
 
 #include "push_swap.h"
 
-static void	do_push(t_stack *src, t_stack *dst)
+void	do_push(t_stack *src, t_stack *dst)
 {
 	t_node	*tmp;
 

@@ -17,6 +17,11 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 typedef enum e_strategy
 {
 	STRATEGY_SIMPLE,
@@ -41,6 +46,13 @@ typedef struct s_stack
 	t_node	*top;
 	int		size;
 }	t_stack;
+
+typedef struct s_chunk_range
+{
+	int	min;
+	int	max;
+}	t_chunk_range;
+
 typedef struct s_benchmark
 {
 	int		sa;
@@ -107,6 +119,10 @@ void		rr(t_stack *a, t_stack *b, t_benchmark *stats);
 void		rra(t_stack *a, t_benchmark *stats);
 void		rrb(t_stack *b, t_benchmark *stats);
 void		rrr(t_stack *a, t_stack *b, t_benchmark *stats);
+void		do_push(t_stack *src, t_stack *dst);
+void		do_swap(t_stack *stack);
+void		do_rotate(t_stack *stack);
+void		do_reverse_rotate(t_stack *stack);
 void		sort_stack(t_stack *a, t_stack *b, t_config *cfg);
 void		sort_two(t_stack *a, t_benchmark *stats);
 void		sort_three(t_stack *a, t_benchmark *stats);
@@ -124,6 +140,7 @@ void		assign_target_position(t_stack *a, t_stack *b);
 int			*find_lis(t_stack *a, int *lis_length);
 void		push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats);
 void		calculate_cost(t_stack *a, t_stack *b);
+t_node		*find_cheapest_node(t_stack *b);
 void		execute_cheapest_move(t_stack *a, t_stack *b, t_benchmark *stats);
 void		final_rotate_to_min(t_stack *a, t_benchmark *stats);
 void		chunk_algorithm(t_stack *a, t_stack *b, int num_chunks,
@@ -147,5 +164,20 @@ void		error_exit(char *message);
 void		error_free_exit(t_stack *a, t_stack *b, char *message);
 void		write_error(char *message);
 void		ft_putnbr(int n);
+
+int			execute_operation(char *op, t_stack *a, t_stack *b);
+int			ft_strcmp_checker(const char *s1, const char *s2);
+char		*get_next_line(int fd);
+size_t		ft_strlen_gnl(const char *s);
+char		*ft_strchr_gnl(const char *s, int c);
+char		*ft_strjoin_gnl(char *s1, char *s2);
+void		do_pa_silent(t_stack *a, t_stack *b);
+void		do_pb_silent(t_stack *a, t_stack *b);
+void		do_sa_silent(t_stack *a);
+void		do_sb_silent(t_stack *b);
+void		do_ss_silent(t_stack *a, t_stack *b);
+void		do_ra_silent(t_stack *a);
+void		do_rb_silent(t_stack *b);
+void		do_rr_silent(t_stack *a, t_stack *b);
 
 #endif

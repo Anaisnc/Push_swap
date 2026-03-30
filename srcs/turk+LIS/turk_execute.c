@@ -5,48 +5,7 @@ typedef struct s_move_costs
 {
 	int	a;
 	int	b;
-}	t_move_costs;
-
-static int	abs_value(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
-
-static int	min_value(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-t_node	*find_cheapest_node(t_stack *b)
-{
-	t_node	*cheapest;
-	t_node	*current;
-	int		min_cost;
-	int		total_cost;
-
-	cheapest = b->top;
-	min_cost = 2147483647;
-	current = b->top;
-	while (current)
-	{
-		total_cost = abs_value(current->cost_a) + abs_value(current->cost_b);
-		if ((current->cost_a > 0 && current->cost_b > 0)
-			|| (current->cost_a < 0 && current->cost_b < 0))
-			total_cost -= min_value(abs_value(current->cost_a),
-					abs_value(current->cost_b));
-		if (total_cost < min_cost)
-		{
-			min_cost = total_cost;
-			cheapest = current;
-		}
-		current = current->next;
-	}
-	return (cheapest);
-}
+} 	t_move_costs;
 
 static void	do_rotations(t_stack *a, t_stack *b, t_move_costs *costs,
 		t_benchmark *stats)

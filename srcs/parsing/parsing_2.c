@@ -31,7 +31,6 @@ bool	is_valid_number(char *str)
 	}
 	return (1);
 }
-/* PARSE ARGS */
 
 static int	split_len(char **split)
 {

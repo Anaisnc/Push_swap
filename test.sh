@@ -46,3 +46,18 @@ echo ""
 # Test 5: Benchmark
 echo -e "${BLUE}Test 5: Benchmark mode${RESET}"
 ./push_swap --bench --adaptive $(shuf -i 0-999 -n 500) 2>&1 | grep "\[bench\]"
+echo ""
+
+# Test 6: Bonus checker
+echo -e "${BLUE}Test 6: Bonus checker${RESET}"
+if [ ! -f ./checker ]; then
+    make bonus >/dev/null 2>&1
+fi
+ARG=$(shuf -i 0-999 -n 20 | tr '\n' ' ')
+BONUS_RESULT=$(./push_swap --adaptive $ARG | ./checker $ARG)
+echo "Résultat checker: $BONUS_RESULT"
+if [ "$BONUS_RESULT" = "OK" ]; then
+    echo -e "${GREEN}✓ Bonus OK${RESET}"
+else
+    echo -e "${RED}✗ Bonus KO${RESET}"
+fi

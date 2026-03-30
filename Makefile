@@ -1,18 +1,14 @@
-
 GREEN       = \033[0;32m
 RED         = \033[0;31m
 BLUE        = \033[0;34m
 YELLOW      = \033[0;33m
 RESET       = \033[0m
-
 NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g3
 INCLUDES    = -I.
 RM          = rm -rf
 
-SRCS_DIR    = srcs
-OBJS_DIR    = objs
 SRCS        = main.c \
               srcs/parsing/parsing_2.c \
               srcs/parsing/validate.c \
@@ -40,13 +36,14 @@ SRCS        = main.c \
               srcs/turk+LIS/turk_positions.c \
               srcs/turk+LIS/turk_costs.c \
               srcs/turk+LIS/turk_execute.c \
-			  srcs/benchmark/benchmark_init.c \
-			  srcs/benchmark/benchmark_print.c \
+              srcs/benchmark/benchmark_init.c \
+              srcs/benchmark/benchmark_print.c \
               srcs/utils/utils.c \
               srcs/utils/error.c \
               srcs/utils/structure.c
 
 OBJS        = $(SRCS:.c=.o)
+DEPS        = $(SRCS:.c=.d)
 
 all: $(NAME)
 
@@ -57,11 +54,11 @@ $(NAME): $(OBJS)
 
 %.o: %.c
 	@echo "$(BLUE)Compiling $<...$(RESET)"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -MMD -MP -c $< -o $@
 
 clean:
 	@echo "$(YELLOW)Cleaning object files...$(RESET)"
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
 	@echo "$(RED)Cleaning $(NAME)...$(RESET)"
@@ -75,11 +72,13 @@ test: $(NAME)
 	@echo ""
 	@echo "$(BLUE)Testing with 100 numbers...$(RESET)"
 	@ARG=$$(gshuf -i 0-999 -n 100 | tr '\n' ' '); \
-	./$(NAME) --simple $$ARG | wc -l
+	    ./$(NAME) --simple $$ARG | wc -l
 
 test-bench: $(NAME)
 	@echo "$(BLUE)Testing benchmark mode with 100 numbers...$(RESET)"
 	@ARG=$$(gshuf -i 0-999 -n 100 | tr '\n' ' '); \
-	./$(NAME) --bench --adaptive $$ARG 2>&1
+	    ./$(NAME) --bench --adaptive $$ARG 2>&1
 
 .PHONY: all clean fclean re test test-bench
+
+-include $(DEPS)

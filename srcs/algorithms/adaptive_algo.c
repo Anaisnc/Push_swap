@@ -30,12 +30,12 @@ void	choose_by_disorder(t_stack *a, t_stack *b, t_config *cfg)
 	if (cfg->disorder < 0.5)
 	{
 		lis_turk_algorithm(a, b, &cfg->stats);
-		cfg->strategy_name = "Adaptive → LIS+Turk O(n²) (low disorder)";
+		cfg->strategy_name = "Adaptive / LIS+Turk O(n²) (low disorder)";
 	}
 	else
 	{
-		lis_turk_algorithm(a, b, &cfg->stats);
-		cfg->strategy_name = "Adaptive → LIS+Turk O(n²) (high disorder)";
+		radix_algorithm(a, b, &cfg->stats);
+		cfg->strategy_name = "Adaptive / O(n log n) (high disorder)";
 	}
 }
 

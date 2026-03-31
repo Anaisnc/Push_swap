@@ -1,5 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   turk_list.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anaiscourt <ancourt@student.42lyon.fr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/24 19:59:07 by ancourt          #+#    #+#             */
+/*   Updated: 2026/03/30 12:00:00 by anaiscourt      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
+
+static t_lis	*new_lis_struct(int *lis, int lis_length)
+{
+	t_lis	*lis_struct;
+
+	lis_struct = malloc(sizeof(t_lis));
+	if (!lis_struct)
+	{
+		free(lis);
+		return (NULL);
+	}
+	lis_struct->values = lis;
+	lis_struct->length = lis_length;
+	return (lis_struct);
+}
+
+t_lis	*find_lis(t_stack *a)
+{
+	int	*arr;
+	int	*lis;
+	int	*lis_len;
+	int	size;
+	int	lis_length;
+
+	size = stack_size(a);
+	arr = stack_to_array(a);
+	if (!arr)
+		return (NULL);
+	lis_len = malloc(sizeof(int) * size);
+	if (!lis_len)
+	{
+		free(arr);
+		return (NULL);
+	}
+	calculate_lis_lengths(arr, lis_len, size);
+	lis = build_lis(arr, lis_len, size, &lis_length);
+	free(lis_len);
+	free(arr);
+	return (new_lis_struct(lis, lis_length));
+}
+
+void	push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats)
+{
+	t_lis	*lis_struct;
+
+	lis_struct = find_lis(a);
+	if (!lis_struct)
+		return ;
+	push_except_lis_loop(a, b, stats, lis_struct);
+	free(lis_struct->values);
+	free(lis_struct);
+}
 
 int	*stack_to_array(t_stack *stack)
 {
@@ -21,125 +84,4 @@ int	*stack_to_array(t_stack *stack)
 		i++;
 	}
 	return (arr);
-}
-
-bool	is_in_lis(int index, int *lis, int lis_len)
-{
-	int	i;
-
-	i = 0;
-	while (i < lis_len)
-	{
-		if (lis[i] == index)
-			return (true);
-		i++;
-	}
-	return (false);
-}
-
-static void	calculate_lis_lengths(int *arr, int *lis_len, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < size)
-	{
-		lis_len[i] = 1;
-		i++;
-	}
-	i = 1;
-	while (i < size)
-	{
-		j = 0;
-		while (j < i)
-		{
-			if (arr[j] < arr[i] && lis_len[j] + 1 > lis_len[i])
-				lis_len[i] = lis_len[j] + 1;
-			j++;
-		}
-		i++;
-	}
-}
-
-int	*find_lis(t_stack *a, int *lis_length)
-{
-	int	*arr;
-	int	*lis;
-	int	*lis_len;
-	int	size;
-	int	max_len;
-	int	max_idx;
-	int	i;
-
-	size = stack_size(a);
-	arr = stack_to_array(a);
-	if (!arr)
-		return (NULL);
-	lis_len = malloc(sizeof(int) * size);
-	lis = malloc(sizeof(int) * size);
-	if (!lis_len || !lis)
-	{
-		free(arr);
-		free(lis_len);
-		free(lis);
-		return (NULL);
-	}
-	calculate_lis_lengths(arr, lis_len, size);
-	max_len = 0;
-	max_idx = 0;
-	i = 0;
-	while (i < size)
-	{
-		if (lis_len[i] > max_len)
-		{
-			max_len = lis_len[i];
-			max_idx = i;
-		}
-		i++;
-	}
-	i = max_idx;
-	while (i >= 0 && max_len > 0)
-	{
-		if (lis_len[i] == max_len)
-			lis[--max_len] = arr[i];
-		i--;
-	}
-	*lis_length = lis_len[max_idx];
-	free(lis_len);
-	free(arr);
-	return (lis);
-}
-
-void	push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats)
-{
-	int	*lis;
-	int	lis_len;
-	int	size;
-	int	pushed;
-	int	rotations;
-
-	lis = find_lis(a, &lis_len);
-	if (!lis)
-		return ;
-	size = stack_size(a);
-	pushed = 0;
-	rotations = 0;
-	while (pushed < size - lis_len)
-	{
-		if (!is_in_lis(a->top->index, lis, lis_len))
-		{
-			pb(a, b, stats);
-			pushed++;
-			rotations = 0;
-		}
-		else
-		{
-			ra(a, stats);
-			rotations++;
-		}
-		if (rotations > size * 2)
-			break ;
-	}
-	free(lis);
 }

@@ -1,12 +1,6 @@
 
 #include "push_swap.h"
 
-typedef struct s_move_costs
-{
-	int	a;
-	int	b;
-} 	t_move_costs;
-
 static void	do_rotations(t_stack *a, t_stack *b, t_move_costs *costs,
 		t_benchmark *stats)
 {

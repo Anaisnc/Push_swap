@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/25 18:00:46 by olchacou          #+#    #+#             */
-/*   Updated: 2026/02/25 18:02:23 by olchacou         ###   ########.fr       */
+/*   Created: 2026/03/30 21:45:35 by ancourt           #+#    #+#             */
+/*   Updated: 2026/03/30 21:45:39 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 

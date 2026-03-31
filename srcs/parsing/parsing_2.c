@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anaiscourt <ancourt@student.42lyon.fr>     +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 15:48:42 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/27 14:55:53 by anaiscourt       ###   ########.fr       */
+/*   Updated: 2026/03/31 03:39:19 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	parse_args(int argc, char **argv, t_stack *a, int start)
 	i = start;
 	while (i < argc)
 	{
+		if (!argv[i] || argv[i][0] == '\0')
+			return (0);
 		split = ft_split(argv[i], ' ');
 		if (!split)
 			return (0);

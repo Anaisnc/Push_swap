@@ -42,3 +42,15 @@ char	*get_complexity_class(t_strategy strategy)
 	else
 		return ("Variable");
 }
+
+void	set_strategy_name(t_config *cfg)
+{
+	if (cfg->strategy == STRATEGY_SIMPLE)
+		cfg->strategy_name = "Simple (LIS+Turk)";
+	else if (cfg->strategy == STRATEGY_MEDIUM)
+		cfg->strategy_name = "Medium (Chunk)";
+	else if (cfg->strategy == STRATEGY_COMPLEX)
+		cfg->strategy_name = "Complex (Radix)";
+	else
+		cfg->strategy_name = "Adaptive";
+}

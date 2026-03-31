@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anaiscourt <ancourt@student.42lyon.fr>     +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/29 15:31:20 by anaiscourt       ###   ########.fr       */
+/*   Updated: 2026/03/31 02:34:27 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+typedef struct s_lis
+{
+	int	*values;
+	int	length;
+}	t_lis;
+
 typedef struct s_chunk_range
 {
 	int	min;
@@ -68,6 +74,13 @@ typedef struct s_benchmark
 	int		rrr;
 	int		total;
 }	t_benchmark;
+
+typedef struct s_move_costs
+{
+	int	a;
+	int	b;
+} t_move_costs;
+
 typedef struct s_config
 {
 	t_strategy		strategy;
@@ -137,8 +150,15 @@ void		lis_turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		push_all_except_three(t_stack *a, t_stack *b, t_benchmark *stats);
 void		assign_current_position(t_stack *stack);
 void		assign_target_position(t_stack *a, t_stack *b);
-int			*find_lis(t_stack *a, int *lis_length);
+int			*stack_to_array(t_stack *stack);
+bool		is_in_lis(int index, int *lis, int lis_len);
+void		calculate_lis_lengths(int *arr, int *lis_len, int size);
+int			get_lis_max_index(int *lis_len, int size);
+int			*build_lis(int *arr, int *lis_len, int size, int *lis_length);
+t_lis		*find_lis(t_stack *a);
 void		push_except_lis(t_stack *a, t_stack *b, t_benchmark *stats);
+void		push_except_lis_loop(t_stack *a, t_stack *b, t_benchmark *stats,
+				t_lis *lis_struct);
 void		calculate_cost(t_stack *a, t_stack *b);
 t_node		*find_cheapest_node(t_stack *b);
 void		execute_cheapest_move(t_stack *a, t_stack *b, t_benchmark *stats);
@@ -160,6 +180,7 @@ void		reset_stats(t_benchmark *stats);
 void		print_benchmark(t_config *cfg);
 void		print_operations_count(t_benchmark *stats);
 char		*get_complexity_class(t_strategy strategy);
+void		set_strategy_name(t_config *cfg);
 void		error_exit(char *message);
 void		error_free_exit(t_stack *a, t_stack *b, char *message);
 void		write_error(char *message);

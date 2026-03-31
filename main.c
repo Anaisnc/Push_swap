@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 	config.stats = (t_benchmark){0};
 	if (!parse_args(argc, argv, a, parse_all_flags(argc, argv, &config)))
 		error_free_exit(a, b, "Error\n");
+	set_strategy_name(&config);
 	validate_input(a);
 	assign_index(a);
 	config.disorder = (float)compute_disorder(a) / 100.0;

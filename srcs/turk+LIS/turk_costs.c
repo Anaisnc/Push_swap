@@ -54,7 +54,7 @@ t_node	*find_cheapest_node(t_stack *b)
 	{
 		total_cost = abs_value(current->cost_a) + abs_value(current->cost_b);
 		if ((current->cost_a > 0 && current->cost_b > 0)
-			|| (current->cost_a < 0 && current->cost_b < 0))
+				|| (current->cost_a < 0 && current->cost_b < 0))
 			total_cost -= min_value(abs_value(current->cost_a),
 					abs_value(current->cost_b));
 		if (total_cost < min_cost)

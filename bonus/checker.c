@@ -65,3 +65,26 @@ int	main(int argc, char **argv)
 	free_both_stacks(a, b);
 	return (0);
 }
+
+int	execute_operation(char *op, t_stack *a, t_stack *b)
+{
+	if (is_command(op, "sa"))
+		do_sa_silent(a);
+	else if (is_command(op, "sb"))
+		do_sb_silent(b);
+	else if (is_command(op, "ss"))
+		do_ss_silent(a, b);
+	else if (is_command(op, "pa"))
+		do_pa_silent(a, b);
+	else if (is_command(op, "pb"))
+		do_pb_silent(a, b);
+	else if (is_command(op, "ra"))
+		do_ra_silent(a);
+	else if (is_command(op, "rb"))
+		do_rb_silent(b);
+	else if (is_command(op, "rr"))
+		do_rr_silent(a, b);
+	else
+		return (execute_operation_part2(op, a, b));
+	return (1);
+}

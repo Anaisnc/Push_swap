@@ -33,6 +33,7 @@ SRCS        = main.c \
               srcs/chunk/chunk_merge.c \
               srcs/turk+LIS/turk_main.c \
               srcs/turk+LIS/turk_list.c \
+              srcs/turk+LIS/turk_list_utils.c \
               srcs/turk+LIS/turk_positions.c \
               srcs/turk+LIS/turk_costs.c \
               srcs/turk+LIS/turk_execute.c \

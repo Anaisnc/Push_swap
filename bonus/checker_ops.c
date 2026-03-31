@@ -1,7 +1,6 @@
 
 #include "push_swap.h"
 
-
 void	do_pb_silent(t_stack *a, t_stack *b)
 {
 	do_push(a, b);
@@ -33,25 +32,25 @@ static int	execute_operation_part2(char *op, t_stack *a, t_stack *b)
 	return (1);
 }
 
-int	execute_operation(char *op, t_stack *a, t_stack *b)
+static int	is_command(char *op, char *cmd)
 {
-	if (ft_strcmp_checker(op, "sa\n") == 0)
-		do_sa_silent(a);
-	else if (ft_strcmp_checker(op, "sb\n") == 0)
-		do_sb_silent(b);
-	else if (ft_strcmp_checker(op, "ss\n") == 0)
-		do_ss_silent(a, b);
-	else if (ft_strcmp_checker(op, "pa\n") == 0)
-		do_pa_silent(a, b);
-	else if (ft_strcmp_checker(op, "pb\n") == 0)
-		do_pb_silent(a, b);
-	else if (ft_strcmp_checker(op, "ra\n") == 0)
-		do_ra_silent(a);
-	else if (ft_strcmp_checker(op, "rb\n") == 0)
-		do_rb_silent(b);
-	else if (ft_strcmp_checker(op, "rr\n") == 0)
-		do_rr_silent(a, b);
-	else
-		return (execute_operation_part2(op, a, b));
+	int	op_len;
+	int	cmd_len;
+
+	op_len = 0;
+	while (op[op_len] && op[op_len] != '\n')
+		op_len++;
+	cmd_len = 0;
+	while (cmd[cmd_len])
+		cmd_len++;
+	if (op_len != cmd_len)
+		return (0);
+	while (cmd_len-- > 0)
+	{
+		if (op[cmd_len] != cmd[cmd_len])
+			return (0);
+	}
 	return (1);
 }
+
+

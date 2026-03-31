@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: your_login <your_login@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:00:00 by your_login        #+#    #+#             */
-/*   Updated: 2025/02/05 12:00:00 by your_login       ###   ########.fr       */
+/*   Updated: 2026/03/30 22:25:11 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static void	ft_putnbr_fd(int n, int fd)
 	c = (n % 10) + '0';
 	write(fd, &c, 1);
 }
-
 
 static void	print_op_line(char *name1, int v1, char *name2, int v2)
 {

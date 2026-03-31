@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 18:00:50 by olchacou          #+#    #+#             */
-/*   Updated: 2026/02/25 18:02:50 by olchacou         ###   ########.fr       */
+/*   Updated: 2026/03/30 21:47:30 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 

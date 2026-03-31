@@ -220,7 +220,6 @@ $ ./push_swap --bench --adaptive $(shuf -i 0-999 -n 100)
 push_swap/
 ├── Makefile
 ├── README.md
-├── TECHNICAL.md              # Detailed technical documentation
 │
 ├── includes/
 │   └── push_swap.h           # All function prototypes
@@ -231,7 +230,7 @@ push_swap/
 │   ├── stack/                # Stack data structure
 │   ├── operations/           # 11 stack operations
 │   ├── algorithms/           # Algorithm dispatchers
-│   ├── turk/                 # Turk + LIS implementation
+│   ├── turk+LIS/             # Turk + LIS implementation
 │   ├── chunk/                # Chunk sort implementation
 │   ├── radix/                # Radix sort implementation
 │   ├── benchmark/            # Statistics & printing
@@ -258,9 +257,6 @@ make test
 
 # Bonus test
 make test-bonus
-
-# Custom test script
-./test.sh
 ```
 
 ### Manual Testing
@@ -375,7 +371,7 @@ All code was reviewed, understood, and modified by the developer. AI served as  
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
 **Anais COURT** - [@ancourt](https://profile.intra.42.fr/users/ancourt)
 **Gracieux CHACOUN** - [@olchacou](https://profile.intra.42.fr/users/olchacou)

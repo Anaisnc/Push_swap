@@ -35,17 +35,21 @@ void	turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats)
 
 void	lis_turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats)
 {
-	int	lis_len;
-	int	*lis;
+	t_lis	*lis_struct;
 
-	lis = find_lis(a, &lis_len);
-	if (lis_len < 3)
+	lis_struct = find_lis(a);
+	if (!lis_struct || lis_struct->length < 3)
 	{
-		free(lis);
+		if (lis_struct)
+		{
+			free(lis_struct->values);
+			free(lis_struct);
+		}
 		turk_algorithm(a, b, stats);
 		return ;
 	}
-	free(lis);
+	free(lis_struct->values);
+	free(lis_struct);
 	push_except_lis(a, b, stats);
 	if (stack_size(a) == 3 && !is_sorted(a))
 		sort_three(a, stats);

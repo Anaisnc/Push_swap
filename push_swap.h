@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/04/01 12:16:36 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/04/01 12:26:15 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ void		write_error(char *message);
 void		ft_putnbr(int n);
 
 int			execute_operation(char *op, t_stack *a, t_stack *b);
+int			is_command(char *op, char *cmd);
+int			execute_operation_part2(char *op, t_stack *a, t_stack *b);
 int			ft_strcmp_checker(const char *s1, const char *s2);
 char		*get_next_line(int fd);
 size_t		ft_strlen_gnl(const char *s);

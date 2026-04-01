@@ -6,7 +6,7 @@
 /*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:46:44 by olchacou          #+#    #+#             */
-/*   Updated: 2026/04/01 11:47:48 by olchacou         ###   ########.fr       */
+/*   Updated: 2026/04/01 12:25:56 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	do_sb_silent(t_stack *b)
 	do_swap(b);
 }
 
-static int	execute_operation_part2(char *op, t_stack *a, t_stack *b)
+int	execute_operation_part2(char *op, t_stack *a, t_stack *b)
 {
 	if (ft_strcmp_checker(op, "rra\n") == 0)
 		do_reverse_rotate(a);
@@ -43,7 +43,7 @@ static int	execute_operation_part2(char *op, t_stack *a, t_stack *b)
 	return (1);
 }
 
-static int	is_command(char *op, char *cmd)
+int	is_command(char *op, char *cmd)
 {
 	int	op_len;
 	int	cmd_len;

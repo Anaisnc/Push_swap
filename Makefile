@@ -10,7 +10,7 @@ INCLUDES    = -I.
 RM          = rm -rf
 
 SRCS        = main.c \
-              srcs/parsing/parsing_2.c \
+              srcs/parsing/parsing.c \
               srcs/parsing/validate.c \
               srcs/parsing/atoi.c \
               srcs/parsing/flags.c \

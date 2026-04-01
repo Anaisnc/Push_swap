@@ -6,7 +6,7 @@
 /*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/31 14:00:14 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/04/01 12:16:36 by ancourt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_chunk_range
 {
 	int	min;
 	int	max;
-}	t_chunk_range;
+}	t_chunk_rge;
 
 typedef struct s_benchmark
 {
@@ -79,7 +79,7 @@ typedef struct s_move_costs
 {
 	int	a;
 	int	b;
-} t_move_costs;
+}	t_move_costs;
 
 typedef struct s_config
 {
@@ -166,9 +166,9 @@ void		final_rotate_to_min(t_stack *a, t_benchmark *stats);
 void		chunk_algorithm(t_stack *a, t_stack *b, int num_chunks,
 				t_benchmark *stats);
 int			calculate_optimal_chunks(int size);
-t_chunk_range	get_chunk_range(int id, int chunks, int size);
+t_chunk_rge	get_chunk_range(int id, int chunks, int size);
 bool		is_in_chunk(int index, int min, int max);
-void		push_chunk_to_b(t_stack *a, t_stack *b, t_chunk_range range,
+void		push_chunk_to_b(t_stack *a, t_stack *b, t_chunk_rge range,
 				t_benchmark *stats);
 int			find_max_position(t_stack *b);
 void		optimal_rotation_b(t_stack *b, int pos, t_benchmark *stats);

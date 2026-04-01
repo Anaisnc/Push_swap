@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   turk_costs.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/01 11:43:12 by olchacou          #+#    #+#             */
+/*   Updated: 2026/04/01 11:45:57 by olchacou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -54,7 +65,7 @@ t_node	*find_cheapest_node(t_stack *b)
 	{
 		total_cost = abs_value(current->cost_a) + abs_value(current->cost_b);
 		if ((current->cost_a > 0 && current->cost_b > 0)
-				|| (current->cost_a < 0 && current->cost_b < 0))
+			|| (current->cost_a < 0 && current->cost_b < 0))
 			total_cost -= min_value(abs_value(current->cost_a),
 					abs_value(current->cost_b));
 		if (total_cost < min_cost)

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   turk_main.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/01 11:43:34 by olchacou          #+#    #+#             */
+/*   Updated: 2026/04/01 11:54:55 by olchacou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -15,12 +26,8 @@ void	push_all_except_three(t_stack *a, t_stack *b, t_benchmark *stats)
 	}
 }
 
-void	turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats)
+void	execute_moves_and_finalize(t_stack *a, t_stack *b, t_benchmark *stats)
 {
-	if (stack_size(a) > 3)
-		push_all_except_three(a, b, stats);
-	if (stack_size(a) == 3)
-		sort_three(a, stats);
 	while (stack_size(b) > 0)
 	{
 		assign_current_position(a);
@@ -31,6 +38,15 @@ void	turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats)
 	}
 	if (!is_sorted(a))
 		final_rotate_to_min(a, stats);
+}
+
+void	turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats)
+{
+	if (stack_size(a) > 3)
+		push_all_except_three(a, b, stats);
+	if (stack_size(a) == 3)
+		sort_three(a, stats);
+	execute_moves_and_finalize(a, b, stats);
 }
 
 void	lis_turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats)
@@ -53,14 +69,5 @@ void	lis_turk_algorithm(t_stack *a, t_stack *b, t_benchmark *stats)
 	push_except_lis(a, b, stats);
 	if (stack_size(a) == 3 && !is_sorted(a))
 		sort_three(a, stats);
-	while (stack_size(b) > 0)
-	{
-		assign_current_position(a);
-		assign_current_position(b);
-		assign_target_position(a, b);
-		calculate_cost(a, b);
-		execute_cheapest_move(a, b, stats);
-	}
-	if (!is_sorted(a))
-		final_rotate_to_min(a, stats);
+	execute_moves_and_finalize(a, b, stats);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 18:00:50 by olchacou          #+#    #+#             */
-/*   Updated: 2026/03/30 21:47:30 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/04/01 16:41:02 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	do_rotate(t_stack *stack)
 void	ra(t_stack *a, t_benchmark *stats)
 {
 	do_rotate(a);
-	write(1, "ra\n", 3);
+	op_print_config(stats, "ra\n", 3);
 	if (stats)
 	{
 		stats->ra++;
@@ -42,7 +42,7 @@ void	ra(t_stack *a, t_benchmark *stats)
 void	rb(t_stack *b, t_benchmark *stats)
 {
 	do_rotate(b);
-	write(1, "rb\n", 3);
+	op_print_config(stats, "rb\n", 3);
 	if (stats)
 	{
 		stats->rb++;
@@ -54,7 +54,7 @@ void	rr(t_stack *a, t_stack *b, t_benchmark *stats)
 {
 	do_rotate(a);
 	do_rotate(b);
-	write(1, "rr\n", 3);
+	op_print_config(stats, "rr\n", 3);
 	if (stats)
 	{
 		stats->rr++;

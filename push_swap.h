@@ -6,7 +6,7 @@
 /*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:59:07 by ancourt           #+#    #+#             */
-/*   Updated: 2026/04/01 12:26:15 by olchacou         ###   ########.fr       */
+/*   Updated: 2026/04/01 16:44:17 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_benchmark
 	int		rrb;
 	int		rrr;
 	int		total;
+	bool	print_ops;
 }	t_benchmark;
 
 typedef struct s_move_costs
@@ -102,7 +103,7 @@ char		*dup_word(const char *s, size_t start, size_t end);
 char		**ft_split(const char *s, char c);
 void		free_split(char **res, size_t k);
 int			fill_split(char **res, const char *s, char c, size_t words);
-
+void		op_print_config(t_benchmark *stats, const char *text, int len);
 void		assign_index(t_stack *a);
 long		ft_atoi(const char *str);
 int			ft_isdigit(int c);
@@ -176,6 +177,7 @@ void		merge_back_from_b(t_stack *a, t_stack *b, t_benchmark *stats);
 void		radix_algorithm(t_stack *a, t_stack *b, t_benchmark *stats);
 void		init_benchmark(t_benchmark *stats);
 void		init_config(t_config *cfg);
+
 void		reset_stats(t_benchmark *stats);
 void		print_benchmark(t_config *cfg);
 void		print_operations_count(t_benchmark *stats);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 18:00:56 by olchacou          #+#    #+#             */
-/*   Updated: 2026/03/30 21:47:10 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/04/01 16:40:55 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	do_swap(t_stack *stack)
 void	sa(t_stack *a, t_benchmark *stats)
 {
 	do_swap(a);
-	write(1, "sa\n", 3);
+	op_print_config(stats, "sa\n", 3);
 	if (stats)
 	{
 		stats->sa++;
@@ -40,7 +40,7 @@ void	sa(t_stack *a, t_benchmark *stats)
 void	sb(t_stack *b, t_benchmark *stats)
 {
 	do_swap(b);
-	write(1, "sb\n", 3);
+	op_print_config(stats, "sb\n", 3);
 	if (stats)
 	{
 		stats->sb++;
@@ -52,7 +52,7 @@ void	ss(t_stack *a, t_stack *b, t_benchmark *stats)
 {
 	do_swap(a);
 	do_swap(b);
-	write(1, "ss\n", 3);
+	op_print_config(stats, "ss\n", 3);
 	if (stats)
 	{
 		stats->ss++;

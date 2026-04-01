@@ -6,7 +6,7 @@
 /*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:38:32 by olchacou          #+#    #+#             */
-/*   Updated: 2026/04/01 11:38:33 by olchacou         ###   ########.fr       */
+/*   Updated: 2026/04/01 16:54:10 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	print_stats(t_config *config)
 {
 	if (!config->bench_mode)
 		return ;
-	print_benchmark(config);
+	else
+		print_benchmark(config);
 }
 
 int	main(int argc, char **argv)
@@ -38,7 +39,7 @@ int	main(int argc, char **argv)
 	t_config	config;
 
 	if (argc < 2)
-		return (write(2, "Usage: ./push_swap [numbers]\n", 28), 1);
+		return (0);
 	a = init_stack();
 	b = init_stack();
 	if (!a || !b)
@@ -46,6 +47,7 @@ int	main(int argc, char **argv)
 	config.strategy = STRATEGY_ADAPTIVE;
 	config.bench_mode = false;
 	config.stats = (t_benchmark){0};
+	config.stats.print_ops = true;
 	if (!parse_args(argc, argv, a, parse_all_flags(argc, argv, &config)))
 		error_free_exit(a, b, "Error\n");
 	set_strategy_name(&config);
@@ -56,6 +58,5 @@ int	main(int argc, char **argv)
 		run_sort(a, b, &config);
 	print_stats(&config);
 	free_stack(a);
-	free_stack(b);
-	return (0);
+	return (free_stack(b), 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 21:45:35 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/30 21:45:39 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/04/01 16:41:02 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	do_reverse_rotate(t_stack *stack)
 void	rra(t_stack *a, t_benchmark *stats)
 {
 	do_reverse_rotate(a);
-	write(1, "rra\n", 4);
+	op_print_config(stats, "rra\n", 4);
 	if (stats)
 	{
 		stats->rra++;
@@ -45,7 +45,7 @@ void	rra(t_stack *a, t_benchmark *stats)
 void	rrb(t_stack *b, t_benchmark *stats)
 {
 	do_reverse_rotate(b);
-	write(1, "rrb\n", 4);
+	op_print_config(stats, "rrb\n", 4);
 	if (stats)
 	{
 		stats->rrb++;
@@ -57,7 +57,7 @@ void	rrr(t_stack *a, t_stack *b, t_benchmark *stats)
 {
 	do_reverse_rotate(a);
 	do_reverse_rotate(b);
-	write(1, "rrr\n", 4);
+	op_print_config(stats, "rrr\n", 4);
 	if (stats)
 	{
 		stats->rrr++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anaiscourt <ancourt@student.42lyon.fr>     +#+  +:+       +#+        */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 18:55:13 by ancourt           #+#    #+#             */
-/*   Updated: 2026/03/27 14:50:40 by anaiscourt       ###   ########.fr       */
+/*   Updated: 2026/04/01 16:54:10 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,10 @@ int	compute_disorder(t_stack *a)
 		current = current->next;
 	}
 	return ((mistakes * 100) / total_pairs);
+}
+
+void	op_print_config(t_benchmark *stats, const char *text, int len)
+{
+	if (stats && stats->print_ops)
+		write(1, text, len);
 }

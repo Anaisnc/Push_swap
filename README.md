@@ -6,7 +6,7 @@ This project has been created as part of the 42 curriculum by olchacou, ancourt
 
 ---
 
-## 📖 Description
+## Description
 
 **Push Swap** is an advanced sorting algorithm project from the 42 curriculum. The goal is to sort a stack of integers using a limited set of operations while minimizing the number of moves required.
 
@@ -23,7 +23,7 @@ This implementation features **four distinct sorting strategies** with varying t
 
 ---
 
-## 🎯 Performance Targets
+## Performance Targets
 
 ### Mandatory Requirements
 
@@ -43,7 +43,7 @@ This implementation features **four distinct sorting strategies** with varying t
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
 
@@ -75,7 +75,7 @@ make re
 
 ---
 
-## 📋 Usage
+## Usage
 
 ### Push Swap Program
 ```bash
@@ -115,7 +115,7 @@ pa
 
 ---
 
-## 🧮 Algorithms Explained
+## Algorithms Explained
 
 ### 1. Simple Sort - O(n²) - LIS + Turk
 
@@ -195,7 +195,7 @@ Size > 100:
 
 ---
 
-## 🔬 Benchmark Mode
+## Benchmark Mode
 
 Enable detailed statistics with `--bench` flag:
 ```bash
@@ -215,7 +215,7 @@ $ ./push_swap --bench --adaptive $(shuf -i 0-999 -n 100)
 
 ---
 
-## 📐 Project Structure
+## Project Structure
 ```
 push_swap/
 ├── Makefile
@@ -248,7 +248,7 @@ push_swap/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Automated Tests
 ```bash
@@ -288,7 +288,7 @@ ARG=$(shuf -i 0-999 -n 100)
 
 ---
 
-## ⚙️ Technical Details
+## Technical Details
 
 ### Stack Operations
 
@@ -330,7 +330,7 @@ ARG=$(shuf -i 0-999 -n 100)
 
 ---
 
-## 🐛 Error Handling
+##  Error Handling
 
 The program handles all edge cases:
 
@@ -344,7 +344,7 @@ The program handles all edge cases:
 
 ---
 
-## 🎓 Resources
+## Resources
 
 ### Algorithm Theory
 - [Longest Increasing Subsequence - GeeksforGeeks](https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/)

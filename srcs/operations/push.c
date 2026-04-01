@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ancourt <ancourt@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: olchacou <olchacou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 18:00:40 by olchacou          #+#    #+#             */
-/*   Updated: 2026/03/30 21:47:37 by ancourt          ###   ########.fr       */
+/*   Updated: 2026/04/01 16:41:02 by olchacou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	do_push(t_stack *src, t_stack *dst)
 void	pa(t_stack *a, t_stack *b, t_benchmark *stats)
 {
 	do_push(b, a);
-	write(1, "pa\n", 3);
+	op_print_config(stats, "pa\n", 3);
 	if (stats)
 	{
 		stats->pa++;
@@ -40,7 +40,7 @@ void	pa(t_stack *a, t_stack *b, t_benchmark *stats)
 void	pb(t_stack *a, t_stack *b, t_benchmark *stats)
 {
 	do_push(a, b);
-	write(1, "pb\n", 3);
+	op_print_config(stats, "pb\n", 3);
 	if (stats)
 	{
 		stats->pb++;

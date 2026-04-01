@@ -84,7 +84,7 @@ re: fclean all
 
 test: $(NAME)
 	@echo "$(BLUE)Testing with 3 numbers...$(RESET)"
-	@./$(NAME) 2 1 3
+	@./$(NAME) 2 1 3 4
 	@echo ""
 	@echo "$(BLUE)Testing with 100 numbers...$(RESET)"
 	@ARG=$$(shuf -i 0-999 -n 100 | tr '\n' ' '); \
